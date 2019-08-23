@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),# 在views中创建一个home的function主页，当访问某个url时回调用home中的function返回一个网页
-
-]
+] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT) #前面写网址后面写文件目录
