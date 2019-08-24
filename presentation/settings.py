@@ -119,9 +119,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'presentation/static/'),
+    # 这里可以对静态文件分门别类，如果blog里面有静态背景图，可以使用
+    # os.path.join(BASE_DIR, 'blog/static'),这样就在blog文件下创建了一个static
+]
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' #放长期不会改变的图片
 
-MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')#将使用的静态文件搜集到根目录下的static，通过python manage.py collecstatic命令
+
+MEDIA_URL = '/media/' #放可能经常会改变的图片
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  #上面有路径的模板
