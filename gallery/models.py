@@ -4,7 +4,7 @@ from django.db import models
 
 class Gallery(models.Model):
 	description = models.CharField(default='在这里写作品的简介', max_length=100)
-	image = models.ImageField(default='default.png', upload_to='images')
+	image = models.ImageField(default='default.png', upload_to='images/')
 	#Gallery是python中的一个对象，description、image都是其属性，现在再创建一个title属性作为其标题
 	title = models.CharField(default='作品标题', max_length=50)
 	

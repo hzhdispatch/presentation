@@ -14,12 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+#import blog.views #导入主项目文件夹下的blog文件夹
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),# 在views中创建一个home的function主页，当访问某个url时回调用home中的function返回一个网页
+    path('blog/', include('blog.urls')),#如果网址匹配，他会使用blog文件夹下的urls.py文件
+    #path('blog/', blog.views.blog_page),这样不会造成不同views之间冲突
+    path('',views.home),
+    # 在views中创建一个home的function主页，当访问某个url时回调用home中的function返回一个网页
 ] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT) #前面写网址后面写文件目录
