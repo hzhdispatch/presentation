@@ -19,4 +19,5 @@ from . import views
 
 urlpatterns = [
     path('', views.blog_page),
+    path('<int:blog_id>/', views.blog_text),#<int:>代表url是整数 记得url后添加“/”，防止下一级还有目录
 ]
