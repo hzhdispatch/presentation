@@ -6,6 +6,10 @@ class Blog(models.Model):
 	date = models.DateField()
 	image = models.ImageField(default='default.png',upload_to='images/')
 	text = models.TextField(default='正文')
+
 	def __str__(self):
 		return self.title
+
+	def short_text(self):
+		return self.text[:40] + '...'
     
